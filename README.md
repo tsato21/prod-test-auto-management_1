@@ -27,16 +27,21 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
         └─ .gitignore
     ```
 - srcには、以降の作業でApps Scriptのファイルを格納する。
-- `.gitignore`は必要に応じて設定。
 
-3. `.clasp.json`の内容を更新する。
-    ```
-    {
-    "scriptId": "XXXXX",
-    "rootDir": "./src"
-    }
-    ```
-    - scriptIdには、***テスト環境用ファイルのD***を入力。
+3. `.clasp.json`、`.gitignore`の内容を更新する。
+    - `.clasp.json`
+        ```
+        {
+        "scriptId": "XXXXX",
+        "rootDir": "./src"
+        }
+        ```
+      - scriptIdには、***テスト環境用ファイルのID***を入力。
+    - `.gitignore`
+        ```
+        **/.clasp.json
+        ```
+      - テスト環境用ファイル情報はGit管理下から外す。
 
 4. `npm install -g @google/clasp`でclaspをグローバルインストール。
 - インストールしてない場合のみ。
@@ -63,7 +68,7 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
 - `clasprc.json`の参照方法 (Macの場合) : `/Users/ユーザー名/`にアクセスし、`command` + `shift` + `.`で隠しファイルを表示する。
     ![.clarprc.jsonのアクセス方法 ](docs/assets/images/user-folder-.clasprc.json.png)
 
-10. Github Actions用のフォルダ、ファイル作成
+9. Github Actions用のフォルダ、ファイル作成
 - フォルダ、ファイル構成
     ```
     ./
@@ -83,7 +88,7 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
     - Google Apps Scriptプロジェクトをデプロイ (Descriptionにタグ名を記載)
 - ***タグ名が`v*`の形式でpushされたときに上記ステップが実行される。***
 
-11. リポジトリを最初のCommit & Push
+10. リポジトリを最初のCommit & Push
     ```
     git init
     git add .
@@ -95,10 +100,14 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
 
 ***【オプション: package.jsonおよびpackage-lock.jsonを設定し、バージョン更新】***
 
-12. `npm init -y`で`package.json`(デフォルト値)を作成する。必要に応じてコード更新。
+11. `npm init -y`で`package.json`(デフォルト値)を作成する。必要に応じてコード更新。
 
-13. `npm install`で`package-lock.json`を作成する。
+12. `npm install`で`package-lock.json`を作成する。
 
+***【オプション: .clasp.jsonをgit管理対象外とする】***
+
+13. `.gitignore`に`.clasp.json`と記載。
+- テスト環境用のファイルを公開したくない場合に使用。
 
 ## 3 使用方法
 1. テスト環境用ファイルを最新の状態にする。(`/src`フォルダ傘下)
@@ -121,7 +130,6 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
 ## 4 参考文献
 - [GitHub Actions を理解する](https://docs.github.com/ja/actions): 公式ドキュメント
 - [アイデアからリリースまでのワークフローを自動化](https://github.co.jp/features/actions): 公式ドキュメント
-- [clasp×githubActionsで複数のgasプロジェクトを一つのリポジトリで管理し、自動デプロイまでできるようにした](https://zenn.dev/furnqse/articles/a138962560db56): 参考サイト
 - [GitHub Actionsを使ってGASをデプロイしてみた](https://dev.classmethod.jp/articles/github-actions-gas-deploy/): 参考サイト
 - [gas-template](https://github.com/ttsukagoshi/gas-template): 参考リポジトリ
 - [Understanding Semantic Versioning: A Guide for Developers](https://www.linkedin.com/pulse/understanding-semantic-versioning-guide-developers-ajibola-oseni-/)
