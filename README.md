@@ -79,9 +79,36 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
     - `~/.clasp.json`を作成（特定のApps Scriptプロジェクトに関連付けられたClaspの設定ファイル）
     - バージョン情報を取得
     - Google Apps Scriptプロジェクトのファイルをアップロード
-    - Google Apps Scriptプロジェクトをデプロイ
+    - Google Apps Scriptプロジェクトをデプロイ (Descriptionにタグ名を記載)
 - ***タグ名が`v*`の形式でpushされたときに上記ステップが実行される。***
 
-11. リポジトリをcommit & push
+11. リポジトリを最初のCommit & Push
+    ```
+    git init
+    git add .
+    git commit -m "first commit"
+    git branch -M main
+    git remote add origin <リポジトリURL>
+    git push -u origin main
+    ```
 
-12. タグ付けしてpush
+【オプション: package.jsonおよびpackage-lock.jsonを設定し、バージョン更新】
+
+12. `npm init -y`で`package.json`(デフォルト値)を作成する。必要に応じてコード更新。
+
+13. `npm install`で`package-lock.json`を作成する。
+
+
+## 3 使用方法
+1. テスト環境用ファイルを最新の状態にする。(`/src`フォルダ傘下)
+
+2. Commit & タグ付け & Push
+    ```
+    git add .
+    git commit -m "XXX"
+    git tag vX.X.X
+    git push origin vX.X.X
+    ```
+    - `vX.X.X`はSemantic Versioningに従い、記載。
+
+## 4 参考文献
