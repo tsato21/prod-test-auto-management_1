@@ -92,7 +92,7 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
     git push -u origin main
     ```
 
-【オプション: package.jsonおよびpackage-lock.jsonを設定し、バージョン更新】
+***【オプション: package.jsonおよびpackage-lock.jsonを設定し、バージョン更新】***
 
 12. `npm init -y`で`package.json`(デフォルト値)を作成する。必要に応じてコード更新。
 
@@ -107,8 +107,14 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
     git add .
     git commit -m "XXX"
     git tag vX.X.X
+    git push origin main
     git push origin vX.X.X
     ```
     - `vX.X.X`はSemantic Versioningに従い、記載。
+
+***【オプション: package.jsonおよびpackage-lock.jsonを設定し、バージョン更新】***
+
+3. `npm version X.X.X`をターミナルで実行
+
 
 ## 4 参考文献
