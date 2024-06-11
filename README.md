@@ -12,6 +12,7 @@
 
 Google Apps Scriptプロジェクトのテスト環境と本番環境を一つのリポジトリで管理し、Github Actionsで本番環境に自動デプロイするワークフロー。(一つのプロジェクトの管理)
 
+***複数プロジェクトを管理するGithub Actions Workflowsは[こちら](https://github.com/tsato21/prod-test-auto-management_2)。***
 
 ## 2 セットアップ
 
@@ -123,8 +124,6 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
 ***【オプション: package.jsonおよびpackage-lock.jsonを設定し、バージョン更新】***
 
 3. `npm version X.X.X`をターミナルで実行
-
-** 複数プロジェクトを管理するGithub Actions Workflowsは[こちら](https://github.com/tsato21/prod-test-auto-management_2)。
 - npmのversionをgit tagと一致させることで、リポジトリ全体の一貫性を保てる。
 
 ## 4 参考文献
