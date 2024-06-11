@@ -124,6 +124,7 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
 - [clasp×githubActionsで複数のgasプロジェクトを一つのリポジトリで管理し、自動デプロイまでできるようにした](https://zenn.dev/furnqse/articles/a138962560db56): 参考サイト
 - [GitHub Actionsを使ってGASをデプロイしてみた](https://dev.classmethod.jp/articles/github-actions-gas-deploy/): 参考サイト
 - [gas-template](https://github.com/ttsukagoshi/gas-template): 参考リポジトリ
+- [Understanding Semantic Versioning: A Guide for Developers](https://www.linkedin.com/pulse/understanding-semantic-versioning-guide-developers-ajibola-oseni-/)
 
 
 ## 5 サンプル
