@@ -126,6 +126,7 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
 
 3. `npm version X.X.X`をターミナルで実行
 
+*** 複数プロジェクトを管理するGithub Actions Workflowsは[こちら](https://github.com/tsato21/prod-test-auto-management_2)。
 
 ## 4 参考文献
 - [GitHub Actions を理解する](https://docs.github.com/ja/actions): 公式ドキュメント
