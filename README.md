@@ -26,7 +26,7 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
         └─ .clasp.json
         └─ .gitignore
     ```
-- srcには、以降の作業でApps Scriptのファイルを格納する。
+- srcフォルダ傘下には、以降の作業でApps Scriptのファイルを格納する。
 
 3. `.clasp.json`、`.gitignore`の内容を更新する。
     - `.clasp.json`
@@ -36,7 +36,7 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
         "rootDir": "./src"
         }
         ```
-      - scriptIdには、***テスト環境用ファイルのID***を入力。
+      - `XXXXX`には、***テスト環境用ファイルのID***を入力。
     - `.gitignore`
         ```
         **/.clasp.json
@@ -47,16 +47,17 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
 - インストールしてない場合のみ。
 
 5. `clasp login`でClaspにログイン
-- ログインが成功したら、`/Users/ユーザー名/.clasprc.json`にDefault credentialsが保存される。
+- ログインが成功したら、`/Users/ユーザー名/.clasprc.json`にDefault credentialsが保存される。(後の作業で使用する)
 
-6. `clasp pull`で`src`フォルダに対象のApps Scriptファイルを格納する。
+6. `clasp pull`で`src`フォルダに対象のApps Scriptファイル (テスト用) を格納する。
 - `clasp pull`実施前に、必要に応じてテスト環境のコードを更新する。
 
 7. Githubで新しいリポジトリを作成する。
 
-8. Repository Secretを設定。
+8. Github SettingsでRepository Secretを設定。
 - Github > Settings > Actions > Repository Secret
-- 設定する項目
+    ![.clarprc.jsonのアクセス方法 ](docs/assets/images/user-folder-.clasprc.json.png)
+- 設定するSecret項目
   - CLASP_SCRIPT_ID: ***本番環境用ファイルのID***
   - CLASPRC_ACCESS_TOKEN: `clasprc.json`を参照
   - CLASPRC_CLIENT_ID: `clasprc.json`を参照
@@ -66,7 +67,6 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
   - CLASPRC_REFRESH_TOKEN: `clasprc.json`を参照
     ![Github Actions Repository Secret ](docs/assets/images/github-setting-actions-repository-secret.png)
 - `clasprc.json`の参照方法 (Macの場合) : `/Users/ユーザー名/`にアクセスし、`command` + `shift` + `.`で隠しファイルを表示する。
-    ![.clarprc.jsonのアクセス方法 ](docs/assets/images/user-folder-.clasprc.json.png)
 
 9. Github Actions用のフォルダ、ファイル作成
 - フォルダ、ファイル構成
@@ -88,7 +88,7 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
     - Google Apps Scriptプロジェクトをデプロイ (Descriptionにタグ名を記載)
 - ***タグ名が`v*`の形式でpushされたときに上記ステップが実行される。***
 
-10. リポジトリを最初のCommit & Push
+10. リポジトリの最初のCommit & Push
     ```
     git init
     git add .
@@ -98,16 +98,13 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
     git push -u origin main
     ```
 
+
 ***【オプション: package.jsonおよびpackage-lock.jsonを設定し、バージョン更新】***
 
-11. `npm init -y`で`package.json`(デフォルト値)を作成する。必要に応じてコード更新。
+11. `npm init -y`で`package.json`(デフォルト設定値)を作成する。必要に応じて内容更新。
 
 12. `npm install`で`package-lock.json`を作成する。
 
-***【オプション: .clasp.jsonをgit管理対象外とする】***
-
-13. `.gitignore`に`.clasp.json`と記載。
-- テスト環境用のファイルを公開したくない場合に使用。
 
 ## 3 使用方法
 1. テスト環境用ファイルを最新の状態にする。(`/src`フォルダ傘下)
@@ -122,18 +119,20 @@ Google Apps Scriptプロジェクトのテスト環境と本番環境を一つ�
     ```
     - `vX.X.X`はSemantic Versioningに従い、記載。
 
+
 ***【オプション: package.jsonおよびpackage-lock.jsonを設定し、バージョン更新】***
 
 3. `npm version X.X.X`をターミナルで実行
 
 ** 複数プロジェクトを管理するGithub Actions Workflowsは[こちら](https://github.com/tsato21/prod-test-auto-management_2)。
+- npmのversionをgit tagと一致させることで、リポジトリ全体の一貫性を保てる。
 
 ## 4 参考文献
 - [GitHub Actions を理解する](https://docs.github.com/ja/actions): 公式ドキュメント
 - [アイデアからリリースまでのワークフローを自動化](https://github.co.jp/features/actions): 公式ドキュメント
 - [GitHub Actionsを使ってGASをデプロイしてみた](https://dev.classmethod.jp/articles/github-actions-gas-deploy/): 参考サイト
-- [gas-template](https://github.com/ttsukagoshi/gas-template): 参考リポジトリ
-- [Understanding Semantic Versioning: A Guide for Developers](https://www.linkedin.com/pulse/understanding-semantic-versioning-guide-developers-ajibola-oseni-/)
+- [gas-template](https://github.com/ttsukagoshi/gas-template): 参考Githubリポジトリ
+- [Understanding Semantic Versioning: A Guide for Developers](https://www.linkedin.com/pulse/understanding-semantic-versioning-guide-developers-ajibola-oseni-/): 参考サイト
 
 
 ## 5 サンプル
